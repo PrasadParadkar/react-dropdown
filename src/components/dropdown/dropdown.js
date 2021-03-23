@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
+import './dropdown.css';
 
 class Dropdown extends Component {
   constructor(props) {
@@ -34,6 +36,11 @@ class Dropdown extends Component {
           onClick={this.toggleDropdownList}
         >
           <div className="dd-header-title">{dropdownTitle}</div>
+          {
+            isListOpen
+              ? <FontAwesome name="angle-up" size="2x" className="dd-header-icon" />
+              : <FontAwesome name="angle-down" size="2x" className="dd-header-icon" />
+          }
         </button>
         {
           isListOpen &&
