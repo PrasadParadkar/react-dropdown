@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css';
 import Dropdown from './components/dropdown/dropdown';
+import ReactDropdown from './components/react-dropdown/react-dropdown';
 // import { locationData } from './common/locationData';
 
 const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Dropdown
+      <ReactDropdown
         dropdownTitle="Select Location"
         dropdownList={locationData}
       />
