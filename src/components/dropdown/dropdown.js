@@ -9,6 +9,19 @@ class Dropdown extends Component {
     };
   }
 
+  toggleDropdownList = () => {
+    this.setState(prevState => ({ isListOpen: !prevState.isListOpen }));
+  }
+
+  selectDropdownListItem = (listItem) => {
+    const { title, id, key } = listItem;
+
+    this.setState({
+      dropdownTitle: title,
+      isListOpen: false
+    })
+  }
+
   render() {
     const { isListOpen, dropdownTitle } = this.state;
     const { dropdownList } = this.props;
@@ -18,7 +31,7 @@ class Dropdown extends Component {
         <button
           type="button"
           className="dd-header"
-          onClick={ }
+          onClick={this.toggleDropdownList}
         >
           <div className="dd-header-title">{dropdownTitle}</div>
         </button>
@@ -35,7 +48,7 @@ class Dropdown extends Component {
                     type="button"
                     className="dd-list-item"
                     key={item.id}
-                    onClick={ }
+                    onClick={() => this.selectDropdownListItem(item)}
                   >
                     {item.title}
                   </button>
