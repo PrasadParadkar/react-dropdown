@@ -5,6 +5,7 @@ import './dropdown.css';
 class Dropdown extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isListOpen: false,
       dropdownTitle: this.props.dropdownTitle
@@ -32,7 +33,9 @@ class Dropdown extends Component {
       if (filteredListItems.length === 1) {
         return { dropdownTitle: filteredListItems[0].title };
       }
-      if (filteredListItems.length > 1) {
+      if (filteredListItems.length === dropdownList.length) {
+        return { dropdownTitle: `All ${dropdownTitlePlural}` };
+      } else if (filteredListItems.length > 1) {
         return { dropdownTitle: `${filteredListItems.length} ${dropdownTitlePlural}` };
       }
       return null;
@@ -86,7 +89,7 @@ class Dropdown extends Component {
                     key={item.id}
                     onClick={() => mode === 'single' ? this.selectDropdownListItem(item) : toggleDropdownListItem(item.id, item.key)}
                   >
-                    {`${item.title} `}
+                    {`${item.title}`}
                     {item.selected && <FontAwesome name="check" className="dd-list-item__checked" />}
                   </button>
                 ))
