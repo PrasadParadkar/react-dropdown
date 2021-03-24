@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import App from './App';
+import ReactDropdown from './components/react-dropdown/react-dropdown';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+afterEach(cleanup);
+
+describe('App', () => {
+  test('should render App Component', () => {
+    const AppComponent = render(<App />);
+    expect(AppComponent).toBeTruthy();
+  });
+
+  test('should render ReactDropdown Component', () => {
+    const ReactDropdownComponent = render(<ReactDropdown />);
+    expect(ReactDropdownComponent).toBeTruthy();
+  });
+})
