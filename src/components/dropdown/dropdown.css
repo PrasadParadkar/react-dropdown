@@ -53,25 +53,28 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  background: transparent;
+  background: #ffffff;
   cursor: pointer;
   border: none;
   padding: 10px;
   font-size: 14px;
 }
 
-.dd-list-item:focus {
+/* .dd-list-item:focus {
   outline: none;
-}
+} */
 
-.dd-list-item:hover {
+.dd-list-item:hover,
+.dd-list-item:focus {
   background-color: #f6f6f6;
   font-size: 15px;
   font-weight: 600;
+  outline: none;
 }
 
 .dd-list-item__checked {
   position: absolute;
   right: 10px;
   font-size: 14px;
+  color: #6366f1;
 }
