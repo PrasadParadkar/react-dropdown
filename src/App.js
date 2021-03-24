@@ -1,53 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css';
-import Dropdown from './components/dropdown/dropdown';
 import ReactDropdown from './components/react-dropdown/react-dropdown';
-// import { locationData } from './common/locationData';
+import { locations } from './common/locationData';
 
 const App = () => {
-  const [locationData, setLocationData] = useState(
-    [
-      {
-        id: 0,
-        title: 'New York',
-        selected: false,
-        key: 'location'
-      },
-      {
-        id: 1,
-        title: 'Dublin',
-        selected: false,
-        key: 'location'
-      },
-      {
-        id: 2,
-        title: 'California',
-        selected: false,
-        key: 'location'
-      },
-      {
-        id: 3,
-        title: 'Istanbul',
-        selected: false,
-        key: 'location'
-      },
-      {
-        id: 4,
-        title: 'Izmir',
-        selected: false,
-        key: 'location'
-      },
-      {
-        id: 5,
-        title: 'Oslo',
-        selected: false,
-        key: 'location'
-      }
-    ]
-  );
+  const locationData = locations;
 
   return (
     <div className="App">
+      <h3>react-dropdown</h3>
+      <p>Set mode to single for single select dropdown and multi for multi-select dropdown</p>
       <ReactDropdown
         dropdownTitle="Select Location"
         dropdownTitlePlural="Locations"

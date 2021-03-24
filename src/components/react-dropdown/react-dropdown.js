@@ -9,7 +9,7 @@ const ReactDropdown = (props) => {
     setDropdownList(dropdownListData);
   }, [dropdownListData]);
 
-  const resetThenSetDropdown = (listItemId, listItemKey) => {
+  const resetThenSetDropdown = (listItemId) => {
     const _dropdownList = [...dropdownList];
 
     _dropdownList.forEach(_item => _item.selected = false);
@@ -17,10 +17,9 @@ const ReactDropdown = (props) => {
     setDropdownList(_dropdownList);
   }
 
-  const toggleDropdownListItem = (listItemId, listItemKey) => {
+  const toggleDropdownListItem = (listItemId) => {
     const _dropdownList = [...dropdownList];
     _dropdownList[listItemId].selected = !_dropdownList[listItemId].selected;
-
     setDropdownList(_dropdownList);
   }
 

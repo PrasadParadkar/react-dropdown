@@ -10,6 +10,7 @@ class Dropdown extends Component {
       isListOpen: false,
       dropdownTitle: this.props.dropdownTitle
     };
+
   }
 
   static getDerivedStateFromProps(nextProps) {
@@ -38,8 +39,7 @@ class Dropdown extends Component {
       } else if (filteredListItems.length > 1) {
         return { dropdownTitle: `${filteredListItems.length} ${dropdownTitlePlural}` };
       }
-      return null;
-    }
+    } else { return null; }
   }
 
   toggleDropdownList = () => {
@@ -53,7 +53,7 @@ class Dropdown extends Component {
     this.setState({
       dropdownTitle: title,
       isListOpen: false
-    }, () => resetThenSetDropdown(id, key));
+    }, () => resetThenSetDropdown(id));
   }
 
   render() {
@@ -87,7 +87,7 @@ class Dropdown extends Component {
                     type="button"
                     className="dd-list-item"
                     key={item.id}
-                    onClick={() => mode === 'single' ? this.selectDropdownListItem(item) : toggleDropdownListItem(item.id, item.key)}
+                    onClick={() => mode === 'single' ? this.selectDropdownListItem(item) : toggleDropdownListItem(item.id)}
                   >
                     {`${item.title}`}
                     {item.selected && <FontAwesome name="check" className="dd-list-item__checked" />}
