@@ -50,7 +50,9 @@ const App = () => {
     <div className="App">
       <ReactDropdown
         dropdownTitle="Select Location"
+        dropdownTitlePlural="Locations"
         dropdownListData={locationData}
+        mode="multi"
       />
     </div>
   );

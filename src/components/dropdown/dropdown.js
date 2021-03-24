@@ -11,6 +11,34 @@ class Dropdown extends Component {
     };
   }
 
+  static getDerivedStateFromProps(nextProps) {
+    const { dropdownList, dropdownTitle, dropdownTitlePlural, mode } = nextProps;
+
+    if (mode === 'single') {
+      const selectedListItem = dropdownList.filter((item) => item.selected);
+
+      if (selectedListItem.length) {
+        return {
+          dropdownTitle: selectedListItem[0].title,
+        };
+      }
+      return { dropdownTitle };
+    } else if (mode === 'multi') {
+      const filteredListItems = dropdownList.filter((item) => item.selected);
+
+      if (filteredListItems.length === 0) {
+        return { dropdownTitle };
+      }
+      if (filteredListItems.length === 1) {
+        return { dropdownTitle: filteredListItems[0].title };
+      }
+      if (filteredListItems.length > 1) {
+        return { dropdownTitle: `${filteredListItems.length} ${dropdownTitlePlural}` };
+      }
+      return null;
+    }
+  }
+
   toggleDropdownList = () => {
     this.setState(prevState => ({ isListOpen: !prevState.isListOpen }));
   }
@@ -27,7 +55,7 @@ class Dropdown extends Component {
 
   render() {
     const { isListOpen, dropdownTitle } = this.state;
-    const { dropdownList } = this.props;
+    const { dropdownList, toggleDropdownListItem, mode } = this.props;
 
     return (
       <div className="dd-wrapper">
@@ -56,7 +84,7 @@ class Dropdown extends Component {
                     type="button"
                     className="dd-list-item"
                     key={item.id}
-                    onClick={() => this.selectDropdownListItem(item)}
+                    onClick={() => mode === 'single' ? this.selectDropdownListItem(item) : toggleDropdownListItem(item.id, item.key)}
                   >
                     {`${item.title} `}
                     {item.selected && <FontAwesome name="check" className="dd-list-item__checked" />}

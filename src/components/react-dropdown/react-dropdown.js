@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Dropdown from '../dropdown/dropdown';
 
 const ReactDropdown = (props) => {
-  const { dropdownTitle, dropdownListData } = props;
+  const { dropdownTitlePlural, dropdownTitle, dropdownListData, mode } = props;
   const [dropdownList, setDropdownList] = useState([]);
 
   useEffect(() => {
@@ -17,11 +17,21 @@ const ReactDropdown = (props) => {
     setDropdownList(_dropdownList);
   }
 
+  const toggleDropdownListItem = (listItemId, listItemKey) => {
+    const _dropdownList = [...dropdownList];
+    _dropdownList[listItemId].selected = !_dropdownList[listItemId].selected;
+
+    setDropdownList(_dropdownList);
+  }
+
   return (
     <Dropdown
+      dropdownTitlePlural={dropdownTitlePlural}
       dropdownTitle={dropdownTitle}
       dropdownList={dropdownList}
       resetThenSetDropdown={resetThenSetDropdown}
+      toggleDropdownListItem={toggleDropdownListItem}
+      mode={mode}
     />
   );
 }
