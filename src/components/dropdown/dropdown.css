@@ -18,7 +18,7 @@
 }
 
 .dd-header:hover {
-  box-shadow: 0px 0 0px 2px #6366f1;
+  box-shadow: 0px 0px 5px #e0e0e0;
 }
 
 .dd-header:focus {
@@ -28,6 +28,9 @@
 
 .dd-header-title {
   flex: 0 0 80%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dd-header-icon {
@@ -42,10 +45,13 @@
   border: 1px solid #e0e0e0;
   border-radius: 7px;
   margin-top: 5px;
+  box-shadow: 0px 0px 5px #e0e0e0;
 }
 
 .dd-list-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   background: transparent;
   cursor: pointer;
@@ -62,4 +68,10 @@
   background-color: #f6f6f6;
   font-size: 15px;
   font-weight: 600;
+}
+
+.dd-list-item__checked {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
 }
