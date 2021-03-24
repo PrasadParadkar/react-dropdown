@@ -16,12 +16,13 @@ class Dropdown extends Component {
   }
 
   selectDropdownListItem = (listItem) => {
+    const { resetThenSetDropdown } = this.props;
     const { title, id, key } = listItem;
 
     this.setState({
       dropdownTitle: title,
       isListOpen: false
-    })
+    }, () => resetThenSetDropdown(id, key));
   }
 
   render() {
@@ -57,7 +58,8 @@ class Dropdown extends Component {
                     key={item.id}
                     onClick={() => this.selectDropdownListItem(item)}
                   >
-                    {item.title}
+                    {`${item.title} `}
+                    {item.selected && <FontAwesome name="check" className="dd-list-item__checked" />}
                   </button>
                 ))
               }
