@@ -50,7 +50,7 @@ const App = () => {
     <div className="App">
       <ReactDropdown
         dropdownTitle="Select Location"
-        dropdownList={locationData}
+        dropdownListData={locationData}
       />
     </div>
   );
