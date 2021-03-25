@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from '../dropdown/dropdown';
 
-function ReactDropdown(props) {
-  const { dropdownTitlePlural, dropdownTitle, dropdownListData, mode } = props;
+const ReactDropdown = (props) => {
+  const { dropdownTitlePlural, dropdownTitle, dropdownListData, mode, listItemTitleKey } = props;
   const [dropdownList, setDropdownList] = useState([]);
 
   useEffect(() => {
@@ -12,14 +12,21 @@ function ReactDropdown(props) {
   const resetThenSetDropdown = (listItemId) => {
     const _dropdownList = [...dropdownList];
 
-    _dropdownList.forEach(_item => _item.selected = false);
-    _dropdownList[listItemId].selected = true;
+    _dropdownList.forEach(_item => {
+      if (_item.id === listItemId) {
+        _item.selected = true;
+      } else {
+        _item.selected = false;
+      }
+    });
     setDropdownList(_dropdownList);
   }
 
   const toggleDropdownListItem = (listItemId) => {
     const _dropdownList = [...dropdownList];
-    _dropdownList[listItemId].selected = !_dropdownList[listItemId].selected;
+    _dropdownList.forEach(_item => {
+      if (_item.id === listItemId) _item.selected = !_item.selected;
+    })
     setDropdownList(_dropdownList);
   }
 
@@ -31,6 +38,7 @@ function ReactDropdown(props) {
       resetThenSetDropdown={resetThenSetDropdown}
       toggleDropdownListItem={toggleDropdownListItem}
       mode={mode}
+      listItemTitleKey={listItemTitleKey}
     />
   );
 }

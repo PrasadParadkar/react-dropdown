@@ -10,18 +10,17 @@ class Dropdown extends Component {
       isListOpen: false,
       dropdownTitle: this.props.dropdownTitle
     };
-
   }
 
   static getDerivedStateFromProps(nextProps) {
-    const { dropdownList, dropdownTitle, dropdownTitlePlural, mode } = nextProps;
+    const { dropdownList, dropdownTitle, dropdownTitlePlural, mode, listItemTitleKey } = nextProps;
 
     if (mode === 'single') {
       const selectedListItem = dropdownList.filter((item) => item.selected);
 
       if (selectedListItem.length) {
         return {
-          dropdownTitle: selectedListItem[0].title,
+          dropdownTitle: selectedListItem[0][listItemTitleKey],
         };
       }
       return { dropdownTitle };
@@ -32,7 +31,7 @@ class Dropdown extends Component {
         return { dropdownTitle };
       }
       if (filteredListItems.length === 1) {
-        return { dropdownTitle: filteredListItems[0].title };
+        return { dropdownTitle: filteredListItems[0][listItemTitleKey] };
       }
       if (filteredListItems.length === dropdownList.length) {
         return { dropdownTitle: `All ${dropdownTitlePlural}` };
@@ -58,7 +57,7 @@ class Dropdown extends Component {
 
   render() {
     const { isListOpen, dropdownTitle } = this.state;
-    const { dropdownList, toggleDropdownListItem, mode } = this.props;
+    const { dropdownList, toggleDropdownListItem, mode, listItemTitleKey } = this.props;
 
     return (
       <div className="dd-wrapper">
@@ -89,7 +88,7 @@ class Dropdown extends Component {
                     key={item.id}
                     onClick={() => mode === 'single' ? this.selectDropdownListItem(item) : toggleDropdownListItem(item.id)}
                   >
-                    {`${item.title}`}
+                    {`${item[listItemTitleKey]}`}
                     {item.selected && <FontAwesome name="check" className="dd-list-item__checked" />}
                   </button>
                 ))
