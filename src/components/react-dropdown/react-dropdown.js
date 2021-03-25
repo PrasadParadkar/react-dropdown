@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from '../dropdown/dropdown';
 
-const ReactDropdown = (props) => {
+function ReactDropdown(props) {
   const { dropdownTitlePlural, dropdownTitle, dropdownListData, mode } = props;
   const [dropdownList, setDropdownList] = useState([]);
 

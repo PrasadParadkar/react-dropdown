@@ -48,7 +48,7 @@ class Dropdown extends Component {
 
   selectDropdownListItem = (listItem) => {
     const { resetThenSetDropdown } = this.props;
-    const { title, id, key } = listItem;
+    const { title, id } = listItem;
 
     this.setState({
       dropdownTitle: title,

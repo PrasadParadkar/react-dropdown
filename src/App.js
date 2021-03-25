@@ -3,7 +3,7 @@ import './App.css';
 import ReactDropdown from './components/react-dropdown/react-dropdown';
 import { locations } from './common/locationData';
 
-const App = () => {
+function App() {
   const locationData = locations;
 
   return (
