@@ -14,7 +14,7 @@ function App() {
         dropdownTitle="Select Location"
         dropdownTitlePlural="Locations"
         dropdownListData={locationData}
-        mode="multi"
+        mode="single"
       />
     </div>
   );
