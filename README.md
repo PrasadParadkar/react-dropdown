@@ -15,35 +15,38 @@ $ npm start
 
 ## Usage
 
-```react
+```HTML
 Single Select Dropdown :
 
 <ReactDropdown
-  dropdownTitle="Select Location"
-  dropdownTitlePlural="Locations"
-  dropdownListData={locationData}
+  dropdownTitle="Select User"
+  dropdownTitlePlural="Users"
+  dropdownListData={dropdownData}
   mode="single"
+  listItemTitleKey="name"
 />
 
 Multi-Select Dropdown
 
 <ReactDropdown
-  dropdownTitle="Select Location"
-  dropdownTitlePlural="Locations"
-  dropdownListData={locationData}
+  dropdownTitle="Select User"
+  dropdownTitlePlural="Users"
+  dropdownListData={dropdownData}
   mode="multi"
+  listItemTitleKey="name"
 />
 
 ```
 
 ## Configuration
 
-| Property            | Datatype         | Description                                                                   | Example                                       |
-| ------------------- | ---------------- | ----------------------------------------------------------------------------- | --------------------------------------------- |
-| dropdownTitle       | string           | Title for dropdown                                                            | 'Select Location'                             |
-| dropdownTitlePlural | string           | Title to display when multiple elements are selected in multi-select dropdown | 'Locations'                                   |
-| dropdownListData    | Array of Objects | Datalist for dropdown options                                                 | [ {id: 0, title: 'New York, selected: false}] |
-| mode                | string           | 'select' for Single Select Dropdown, 'multi' for Multi-Select Dropdown        | 'single' OR 'multi'                           |
+| Property            | Datatype         | Description                                                                                                     | Example                                           |
+| ------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| dropdownTitle       | string           | Title for dropdown                                                                                              | 'Select User'                                     |
+| dropdownTitlePlural | string           | Title to display when multiple elements are selected in multi-select dropdown                                   | 'Users'                                           |
+| dropdownListData    | Array of Objects | Datalist for dropdown options                                                                                   | [ {id: 1, name: 'Ervin Howell', selected: false}] |
+| mode                | string           | 'select' for Single Select Dropdown, 'multi' for Multi-Select Dropdown                                          | 'single' OR 'multi'                               |
+| listItemTitleKey    | string           | Key to fetch title from dropdownListData. This key varies for different types of data. (e.g. name, title, etc.) | 'name'                                            |
 
 ## Available Scripts
 
